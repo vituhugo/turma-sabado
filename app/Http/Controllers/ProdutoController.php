@@ -35,6 +35,18 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => '',
+            'price' => 'required|numeric'
+        ], [
+            'name.required' => 'O campo nome é obrigatório',
+            'price.required' => 'O campo preço é obrigatório',
+            'price.numeric' => 'O campo preço tem que ser um número ( Use "." em vez de ",")',
+        ]);
+        
+        dd($validatedData);
+
         // $produto->name = $request->name;
         // $produto->description = $request->description;
         // $produto->price = $request->price;

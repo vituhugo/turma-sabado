@@ -21,3 +21,5 @@ Route::get('/form', 'ProdutoController@create');
 Route::post('/store', 'ProdutoController@store');
 Route::get('/edit/{id}', 'ProdutoController@edit');
 Route::put('/update/{id}', 'ProdutoController@update');
+
+Route::auth();

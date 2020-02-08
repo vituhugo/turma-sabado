@@ -10,7 +10,10 @@
         @csrf
         <div>
             <label for="">Nome</label>
-            <input type="text" name="name" @if(isset($produto)) value="{{ $produto->name }}" @endif>
+            <input type="text" name="name" value="{{ old('name', isset($produto) ? $produto->name : '') }}">
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <label for="">Descricao</label>
@@ -19,6 +22,9 @@
         <div>
             <label for="">Preco</label>
             <input type="text" name="price" @if(isset($produto)) value="{{ $produto->price }}" @endif>
+            @error('price')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <button>Salvar</button>
